@@ -48,12 +48,12 @@ def draw(filename,openid):
  plt.savefig(gr_path)
  plt.close()
 
- import scipy.ndimage.interpolation as interp
- imag = interp.rotate(input=imag, angle=openid, axes=(0,1), reshape = False)
+# import scipy.ndimage.interpolation as interp
+# imag = interp.rotate(input=imag, angle=openid, axes=(0,1), reshape = False)
  
  #imag=imag.rotate(cho)
- output_filename = filename
- imag.save(output_filename)
+# output_filename = filename
+# imag.save(output_filename)
  
 return output_filename,gr_path
 
