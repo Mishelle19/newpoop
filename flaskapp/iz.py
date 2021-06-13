@@ -48,8 +48,22 @@ sns.displot(data)
 plt.savefig(gr_path)
 plt.close()
 
-import scipy.ndimage.interpolation as interp
-imag = interp.rotate(input=imag, angle=openid, axes=(0,1), reshape = False)
+if openid==0:
+a = imag.crop((0, 0, int(y * 0.5), x))
+b = imag.crop((int(y * 0.5), 0, x, y))
+imag.paste(b, (0, 0))
+imag.paste(a, (int(x * 0.5), 0))
+output_filename = filename
+imag.save(output_filename)
+if openid==1:
+imag=imag.rotate(90)
+a = imag.crop((0, 0, int(y * 0.5), x))
+b = imag.crop((int(y * 0.5), 0, x, y))
+imag.paste(b, (0, 0))
+imag.paste(a, (int(y * 0.5), 0))
+imag=imag.rotate(270)
+output_filename = filename
+imag.save(output_filename)
 return output_filename,gr_path
 
 @app.route("/net",methods=['GET', 'POST'])
