@@ -20,7 +20,7 @@ app.config['RECAPTCHA_OPTIONS'] = {'theme': 'white'}
 from flask_bootstrap import Bootstrap
 bootstrap = Bootstrap(app)
 class NetForm(FlaskForm):
- openid = StringField('Изменить: 0 - по вертикали, 1 - по горизонтали.', validators = [DataRequired()])
+ #openid = StringField('Изменить: 0 - по вертикали, 1 - по горизонтали.', validators = [DataRequired()])
  upload = FileField('Загрузка изображения', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg'], 'Images only!')])
  recaptcha = RecaptchaField()
  submit = SubmitField('send')
@@ -31,11 +31,11 @@ from PIL import Image
 import matplotlib.pyplot as plt
 import seaborn as sns
  
-def draw(filename,openid):
+def draw(filename):
  print(filename)
  imag= Image.open(filename)
  x, y = imag.size
- openid=int(openid)
+ #openid=int(openid)
  
  fig = plt.figure(figsize=(6, 4))
  ax = fig.add_subplot()
@@ -55,7 +55,7 @@ def draw(filename,openid):
 # output_filename = filename
 # imag.save(output_filename)
  
-  #return output_filename,gr_path
+  return gr_path
 
 @app.route("/net",methods=['GET', 'POST'])
 def net():
@@ -67,8 +67,8 @@ def net():
   filename = os.path.join('./static', secure_filename(form.upload.data.filename))
   ch=form.openid.data
   form.upload.data.save(filename)
-  newfilename,grname = draw(filename,ch)
- return render_template('net.html',form=form,image_name=newfilename,gr_name=grname)
+  grname = draw(filename)
+ return render_template('net.html',form=form,image_name=filename,gr_name=grname)
 
 if __name__ == "__main__":
  app.run(host='127.0.0.1',port=5000)
