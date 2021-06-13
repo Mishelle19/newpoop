@@ -31,22 +31,21 @@ from PIL import Image
 import matplotlib.pyplot as plt
 import seaborn as sns
  
-def draw(filename):
- print(filename)
- imag= Image.open(filename)
- x, y = imag.size
+print(filename)
+imag= Image.open(filename)
+x, y = imag.size
  #openid=int(openid)
  
- fig = plt.figure(figsize=(6, 4))
- ax = fig.add_subplot()
- data = np.random.randint(0, 255, (100, 100))
- ax.imshow(imag, cmap='plasma')
- b = ax.pcolormesh(data, edgecolors='black', cmap='plasma')
- fig.colorbar(b, ax=ax)
- gr_path = "./static/newgr.png"
- sns.displot(data)
- plt.savefig(gr_path)
- plt.close()
+fig = plt.figure(figsize=(6, 4))
+ax = fig.add_subplot()
+data = np.random.randint(0, 255, (100, 100))
+ax.imshow(imag, cmap='plasma')
+b = ax.pcolormesh(data, edgecolors='black', cmap='plasma')
+fig.colorbar(b, ax=ax)
+gr_path = "./static/newgr.png"
+sns.displot(data)
+plt.savefig(gr_path)
+plt.close()
 
 # import scipy.ndimage.interpolation as interp
 # imag = interp.rotate(input=imag, angle=openid, axes=(0,1), reshape = False)
@@ -54,8 +53,6 @@ def draw(filename):
  #imag=imag.rotate(cho)
 # output_filename = filename
 # imag.save(output_filename)
- 
-  #return gr_path
 
 @app.route("/net",methods=['GET', 'POST'])
 def net():
@@ -67,7 +64,7 @@ def net():
   filename = os.path.join('./static', secure_filename(form.upload.data.filename))
   ch=form.openid.data
   form.upload.data.save(filename)
-  grname = draw(filename)
+  grname = gr_path
  return render_template('net.html',form=form,image_name=filename,gr_name=grname)
 
 if __name__ == "__main__":
