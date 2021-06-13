@@ -55,7 +55,7 @@ def draw(filename,openid):
 # output_filename = filename
 # imag.save(output_filename)
  
-return gr_path
+return output_filename
 
 @app.route("/net",methods=['GET', 'POST'])
 def net():
