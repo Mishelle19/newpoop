@@ -13,8 +13,8 @@ from flask_wtf.file import FileField, FileAllowed, FileRequired
 SECRET_KEY = 'secret'
 app.config['SECRET_KEY'] = SECRET_KEY
 app.config['RECAPTCHA_USE_SSL'] = False
-app.config['RECAPTCHA_PUBLIC_KEY'] = '6Lem7C0bAAAAAFb0mjCJ-JvSZOIAJFQ4ZhVnYxDd'
-app.config['RECAPTCHA_PRIVATE_KEY'] = '6Lem7C0bAAAAAHPlZJAjMJdrhuN8twMTBf0ilGIg'
+app.config['RECAPTCHA_PUBLIC_KEY'] = '6Len7C0bAAAAAP2x8aRDGy57sEiyn6_psJSDDHzo'
+app.config['RECAPTCHA_PRIVATE_KEY'] = '6Len7C0bAAAAAEhAW7vclLdDveHmz-DXRBTGK1zr'
 app.config['RECAPTCHA_OPTIONS'] = {'theme': 'white'}
 
 from flask_bootstrap import Bootstrap
