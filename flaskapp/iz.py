@@ -77,7 +77,20 @@ def draw(filename,cho):
  img=img.rotate(cho,expand=True)
  output_filename = filename
  img.save(output_filename)
- return output_filename,gr_path
+
+##делаем график
+ fig = plt.figure(figsize=(6, 4))
+ ax = fig.add_subplot()
+ data = np.random.randint(0, 255, (100, 100))
+ ax.imshow(img, cmap='plasma')
+ b = ax.pcolormesh(data, edgecolors='black', cmap='plasma')
+ fig.colorbar(b, ax=ax)
+ gr_path = "./static/newgr2.png"
+ sns.displot(data)
+ #plt.show()
+ plt.savefig(gr_path2)
+ plt.close()
+ return output_filename,gr_path,gr_path2
 
 
 
@@ -90,6 +103,7 @@ def net():
  filename=None
  newfilename=None
  grname=None
+ grname2=None
  # проверяем нажатие сабмит и валидацию введенных данных
  if form.validate_on_submit():
   # файлы с изображениями читаются из каталога static
@@ -102,7 +116,7 @@ def net():
  # передаем форму в шаблон, так же передаем имя файла и результат работы нейронной
  # сети если был нажат сабмит, либо передадим falsy значения
  
- return render_template('net.html',form=form,image_name=newfilename,gr_name=grname)
+ return render_template('net.html',form=form,image_name=newfilename,gr_name=grname,gr_name2)
 
 
 if __name__ == "__main__":
