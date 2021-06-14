@@ -57,7 +57,6 @@ def draw(filename,cho):
  ##открываем изображение 
  print(filename)
  img= Image.open(filename)
- #a=int(cho)
  
 ##делаем график
  fig = plt.figure(figsize=(6, 4))
@@ -68,7 +67,6 @@ def draw(filename,cho):
  fig.colorbar(b, ax=ax)
  gr_path = "./static/newgr.png"
  sns.displot(data)
- #plt.show()
  plt.savefig(gr_path)
  plt.close()
 
@@ -85,9 +83,8 @@ def draw(filename,cho):
  ax.imshow(img, cmap='plasma')
  b = ax.pcolormesh(data, edgecolors='black', cmap='plasma')
  fig.colorbar(b, ax=ax)
- gr_path = "./static/newgr2.png"
+ gr_path2 = "./static/newgr2.png"
  sns.displot(data)
- #plt.show()
  plt.savefig(gr_path2)
  plt.close()
  return output_filename,gr_path,gr_path2
