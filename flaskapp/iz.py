@@ -77,6 +77,13 @@ def draw(filename,cho):
  img.save(output_filename)
 
 ##делаем график
+ data2 = np.random.randint(0, 255, (100, 100))
+ b = ax.pcolormesh(data2, edgecolors='black', cmap='plasma')
+ fig.colorbar(b, ax=ax)
+ gr_path2 = "./static/newgr2.png"
+ sns.displot(data)
+ plt.savefig(gr_path2)
+ plt.close()
 
  return output_filename,gr_path,gr_path
 
