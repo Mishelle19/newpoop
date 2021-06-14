@@ -1,3 +1,4 @@
+print("Hello world")
 from flask import Flask
 app = Flask(__name__)
 #декоратор для вывода страницы по умолчанию
@@ -19,8 +20,8 @@ SECRET_KEY = 'secret'
 app.config['SECRET_KEY'] = SECRET_KEY
 # используем капчу и полученные секретные ключи с сайта google 
 app.config['RECAPTCHA_USE_SSL'] = False
-app.config['RECAPTCHA_PUBLIC_KEY'] = '6LcpmDIbAAAAAH71jJy9heie14Kkj5Bvf9q-UL9U'
-app.config['RECAPTCHA_PRIVATE_KEY'] = '6LcpmDIbAAAAABKVq9XShN0TphFfG2Bo1i2BmCam'
+app.config['RECAPTCHA_PUBLIC_KEY'] = '6LfxtBcbAAAAAJgi6cgsr8wgJmBWpcCoCTv1pJ_e'
+app.config['RECAPTCHA_PRIVATE_KEY'] = '6LfxtBcbAAAAANpv6l0gYsG_CkivIPRUq2_wXV5V'
 app.config['RECAPTCHA_OPTIONS'] = {'theme': 'white'}
 # обязательно добавить для работы со стандартными шаблонами
 from flask_bootstrap import Bootstrap
@@ -74,10 +75,23 @@ def draw(filename,cho):
  plt.close()
 
 
-##переворот 
- img=img.rotate(cho)
- output_filename = filename
- img.save(output_filename)
+##меняем половинки
+ if cho==1: 
+  a = img.crop((0, 0, int(y * 0.5), x))
+  b = img.crop((int(y * 0.5), 0, x, y))
+  img.paste(b, (0, 0))
+  img.paste(a, (int(x * 0.5), 0))
+  output_filename = filename
+  img.save(output_filename)
+ else:
+  img=img.rotate(90)
+  a = img.crop((0, 0, int(y * 0.5), x))
+  b = img.crop((int(y * 0.5), 0, x, y))
+  img.paste(b, (0, 0))
+  img.paste(a, (int(y * 0.5), 0))
+  img=img.rotate(270)
+  output_filename = filename
+  img.save(output_filename)
  return output_filename,gr_path
 
 
