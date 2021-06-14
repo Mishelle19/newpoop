@@ -1,7 +1,7 @@
 {% extends "bootstrap/base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 <!-- задаем заголовок страницы -->
-{% block title %}This is an page{% endblock %}
+{% block title %}My IZeee{% endblock %}
 <!-- блок body -->
 {% block content %}
 {{ wtf.quick_form(form, method='post',enctype="multipart/form-data", action="net") }}
@@ -26,6 +26,7 @@
  <p> There is no image yet </p>
 {% endif %}
 {% endblock %}
+
 
 <h2>grafik2: </h2> 
 <!-- проверяем есть ли данные классификации -->
