@@ -20,7 +20,7 @@ app.config['RECAPTCHA_OPTIONS'] = {'theme': 'white'}
 from flask_bootstrap import Bootstrap
 bootstrap = Bootstrap(app)
 class NetForm(FlaskForm):
-  openid = StringField('Изменить: 0 - по вертикали, 1 - по горизонтали.', validators = [DataRequired()])
+  openid = StringField('Насколько повернуть(в градусах).', validators = [DataRequired()])
   upload = FileField('Загрузка изображения', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg'], 'Images only!')])
   recaptcha = RecaptchaField()
   submit = SubmitField('send')
@@ -34,9 +34,9 @@ class NetForm(FlaskForm):
 def draw(filename,openid):
   print(filename)
   imag= Image.open(filename)
-  x, y = imag.size
   openid=int(openid)
 
+  #график
   fig = plt.figure(figsize=(6, 4))
   ax = fig.add_subplot()
   data = np.random.randint(0, 255, (100, 100))
@@ -47,6 +47,13 @@ def draw(filename,openid):
   sns.displot(data)
   plt.savefig(gr_path)
   plt.close()
+  
+  img=img.rotate(openid)
+  output_filename = filename
+  img.save(output_filename)
+  
+  
+  
 return output_filename,gr_path
 
 @app.route("/net",methods=['GET', 'POST'])
