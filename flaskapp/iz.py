@@ -76,22 +76,9 @@ def draw(filename,cho):
 
 
 ##меняем половинки
- if cho==1: 
-  a = img.crop((0, 0, int(y * 0.5), x))
-  b = img.crop((int(y * 0.5), 0, x, y))
-  img.paste(b, (0, 0))
-  img.paste(a, (int(x * 0.5), 0))
-  output_filename = filename
-  img.save(output_filename)
- else:
-  img=img.rotate(90)
-  a = img.crop((0, 0, int(y * 0.5), x))
-  b = img.crop((int(y * 0.5), 0, x, y))
-  img.paste(b, (0, 0))
-  img.paste(a, (int(y * 0.5), 0))
-  img=img.rotate(270)
-  output_filename = filename
-  img.save(output_filename)
+ img=img.rotate(cho)
+ output_filename = filename
+ img.save(output_filename)
  return output_filename,gr_path
 
 
