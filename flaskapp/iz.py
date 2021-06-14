@@ -1,4 +1,3 @@
-print("Hello world")
 from flask import Flask
 app = Flask(__name__)
 #декоратор для вывода страницы по умолчанию
@@ -54,11 +53,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 ## функция для оброботки изображения 
-def draw(filename,cho):
+def draw(upload,cho):
  ##открываем изображение 
  print(filename)
  img= Image.open(filename)
- x, y = img.size
  cho=int(cho)
  
 ##делаем график
@@ -75,7 +73,7 @@ def draw(filename,cho):
  plt.close()
 
 
-##меняем половинки
+##переворот 
  img=img.rotate(cho)
  output_filename = filename
  img.save(output_filename)
