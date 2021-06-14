@@ -57,7 +57,7 @@ def draw(upload,cho):
  ##открываем изображение 
  print(filename)
  img= Image.open(filename)
- cho=int(cho)
+ a=int(cho)
  
 ##делаем график
  fig = plt.figure(figsize=(6, 4))
@@ -74,7 +74,7 @@ def draw(upload,cho):
 
 
 ##переворот 
- img=img.rotate(cho)
+ img=img.rotate(90,expand=True)
  output_filename = filename
  img.save(output_filename)
  return output_filename,gr_path
