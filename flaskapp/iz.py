@@ -31,7 +31,7 @@ class NetForm(FlaskForm):
  # валидатор проверяет введение данных после нажатия кнопки submit
  # и указывает пользователю ввести данные если они не введены
  # или неверны
- cho = StringField('1-изменить по вертикали,2-по горизонтали', validators = [DataRequired()])
+ cho = StringField('Повернуть на', validators = [DataRequired()])
  # поле загрузки файла
  # здесь валидатор укажет ввести правильные файлы
  upload = FileField('Load image', validators=[
@@ -77,14 +77,14 @@ def draw(filename,cho):
  img.save(output_filename)
 
 ##делаем график
- fig = plt.figure(figsize=(6, 4))
- ax = fig.add_subplot()
- data = np.random.randint(0, 255, (100, 100))
- ax.imshow(img, cmap='plasma')
- b = ax.pcolormesh(data, edgecolors='black', cmap='plasma')
- fig.colorbar(b, ax=ax)
+ fig2 = plt.figure(figsize=(6, 4))
+ ax2 = fig2.add_subplot()
+ data2 = np.random.randint(0, 255, (100, 100))
+ ax2.imshow(img, cmap='plasma')
+ b2 = ax2.pcolormesh(data2, edgecolors='black', cmap='plasma')
+ fig2.colorbar(b2, ax2=ax2)
  gr_path2 = "./static/newgr2.png"
- sns.displot(data)
+ sns.displot(data2)
  plt.savefig(gr_path2)
  plt.close()
  return output_filename,gr_path,gr_path2
