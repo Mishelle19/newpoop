@@ -75,9 +75,9 @@ def draw(filename,cho):
 
 
 ##переворот 
-  img=img.rotate(cho)
-  output_filename = filename
-  img.save(output_filename)
+ img=img.rotate(cho)
+ output_filename = filename
+ img.save(output_filename)
  return output_filename,gr_path
 
 
