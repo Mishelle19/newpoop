@@ -112,11 +112,11 @@ def net():
   ch=int(ch)
  
   form.upload.data.save(filename)
-  newfilename,grname = draw(filename,ch)
+  newfilename,grname,grname2 = draw(filename,ch)
  # передаем форму в шаблон, так же передаем имя файла и результат работы нейронной
  # сети если был нажат сабмит, либо передадим falsy значения
  
- return render_template('net.html',form=form,image_name=newfilename,gr_name=grname,gr_name2)
+ return render_template('net.html',form=form,image_name=newfilename,gr_name=grname,gr_name2=grname2)
 
 
 if __name__ == "__main__":
