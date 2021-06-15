@@ -55,7 +55,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 ## функция для оброботки изображения 
-def draw(filename,cho):
+def draw(filename,cho,rasm,osi):
  ##открываем изображение 
  print(filename)
  img= Image.open(filename)
