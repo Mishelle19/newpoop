@@ -81,15 +81,15 @@ def draw(filename,cho,razm,osi):
 ##изменение размера по осям
  if osi==1:
   basewidth = razm
-  hpercent = (baseheight / float (img.size[1])) 
+  hpercent = (baseweight / float (img.size[1])) 
   wsize = int ((float (img.size[0]) * float (hpercent))) 
-  img = img.resize ((wsize, baseheight)) 
+  img = img.resize ((wsize, baseweight)) 
   img.save(output_filename)
  else:
   baseheight = razm
-  wpercent = (basewidth / float(img.size[0]))
+  wpercent = (basehidth / float(img.size[0]))
   hsize = int((float(img.size[1]) * float(wpercent)))
-  img = img.resize((basewidth, hsize))
+  img = img.resize((basehidth, hsize))
   img.save(output_filename)
  
  return output_filename,gr_path,gr_path
