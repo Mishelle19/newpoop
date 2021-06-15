@@ -79,7 +79,7 @@ def draw(filename,cho):
  img.save(output_filename)
 
 ##изменение размера по осям
- if osi==1;
+ if osi==1:
   basewidth = razm
   hpercent = (baseheight / float (img.size[1])) 
   wsize = int ((float (img.size[0]) * float (hpercent))) 
