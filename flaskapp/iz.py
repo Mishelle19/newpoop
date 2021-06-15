@@ -32,6 +32,8 @@ class NetForm(FlaskForm):
  # и указывает пользователю ввести данные если они не введены
  # или неверны
  cho = StringField('Повернуть на', validators = [DataRequired()])
+ choi = StringField('1-расширить по горизонтали, 2-расширить по вертикали', validators = [DataRequired()])
+ chois = Stringfield('3-сузить по горизонтали, 4-сузить по вертикали', validators = [DataRequired()])
  # поле загрузки файла
  # здесь валидатор укажет ввести правильные файлы
  upload = FileField('Load image', validators=[
@@ -70,13 +72,14 @@ def draw(filename,cho):
  plt.savefig(gr_path)
  plt.close()
 
-
+ 
 ##переворот 
  img=img.rotate(cho,expand=True)
  output_filename = filename
  img.save(output_filename)
 
-
+##изменение размера по осям
+ 
  return output_filename,gr_path,gr_path
 
 
