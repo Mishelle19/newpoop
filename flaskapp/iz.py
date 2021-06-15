@@ -32,8 +32,8 @@ class NetForm(FlaskForm):
  # и указывает пользователю ввести данные если они не введены
  # или неверны
  cho = StringField('Повернуть на', validators = [DataRequired()])
- osi = StringField('1-по горизонтали, 2-по вертикали', validators = [DataRequired()])
- razm = StringField('насколько', validators = [DataRequired()])
+ gor = StringField('горизонталь', validators = [DataRequired()])
+ ver = StringField('вертикаль', validators = [DataRequired()])
  # поле загрузки файла
  # здесь валидатор укажет ввести правильные файлы
  upload = FileField('Load image', validators=[
@@ -55,7 +55,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 ## функция для оброботки изображения 
-def draw(filename,cho,razm,osi):
+def draw(filename,cho,gor,ver):
  ##открываем изображение 
  print(filename)
  img= Image.open(filename)
@@ -76,21 +76,13 @@ def draw(filename,cho,razm,osi):
 ##переворот 
  img=img.rotate(cho,expand=True)
  output_filename = filename
- 
+ img.save(output_filename)
 
 ##изменение размера по осям
- if osi==1:
-  basewidth = razm
-  wpercent = (basewidth / float (img.size[1])) 
-  hsize = int ((float (img.size[0]) * float (wpercent))) 
-  img = img.resize ((basewidth, hsize)) 
-  img.save(output_filename)
- else:
-  baseheight = razm
-  hpercent = (baseheight / float(img.size[0]))
-  wsize = int((float(img.size[1]) * float(hpercent)))
-  img = img.resize((wsize, baseheight))
-  img.save(output_filename)
+ size=(gor,ver) 
+ img = img.resize(size) 
+ img.save(output_filename)
+
  
  return output_filename,gr_path,gr_path
 
@@ -112,9 +104,9 @@ def net():
   filename = os.path.join('./static', secure_filename(form.upload.data.filename))
   ch=form.cho.data
   ch=int(ch)
-  osii=form.osi.data
+  osii=form.gor.data
   osii=int(osii)
-  ra=form.razm.data
+  ra=form.ver.data
   ra=int(ra)
   form.upload.data.save(filename)
   newfilename,grname,grname2 = draw(filename,ch,osii,ra)
