@@ -33,7 +33,7 @@ class NetForm(FlaskForm):
  # или неверны
  cho = StringField('Повернуть на', validators = [DataRequired()])
  osi = StringField('1-по горизонтали, 2-по вертикали', validators = [DataRequired()])
- razm = Stringfield('насколько', validators = [DataRequired()])
+ razm = StringField('насколько', validators = [DataRequired()])
  # поле загрузки файла
  # здесь валидатор укажет ввести правильные файлы
  upload = FileField('Load image', validators=[
