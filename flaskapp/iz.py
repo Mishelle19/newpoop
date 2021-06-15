@@ -114,7 +114,7 @@ def net():
   ch=int(ch)
  
   form.upload.data.save(filename)
-  newfilename,grname,grname2 = draw(filename,ch)
+  newfilename,grname,grname2 = draw(filename,ch,osi,razm)
  
  return render_template('net.html',form=form,image_name=newfilename,gr_name=grname,gr_name2=grname2)
 
