@@ -76,7 +76,7 @@ def draw(filename,cho,razm,osi):
 ##переворот 
  img=img.rotate(cho,expand=True)
  output_filename = filename
- img.save(output_filename)
+ 
 
 ##изменение размера по осям
  if osi==1:
