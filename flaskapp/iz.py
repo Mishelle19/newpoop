@@ -112,12 +112,12 @@ def net():
   filename = os.path.join('./static', secure_filename(form.upload.data.filename))
   ch=form.cho.data
   ch=int(ch)
-  os=form.osi.data
-  os=int(os)
+  osii=form.osi.data
+  osii=int(osii)
   ra=form.razm.data
   ra=int(ra)
   form.upload.data.save(filename)
-  newfilename,grname,grname2 = draw(filename,ch,os,ra)
+  newfilename,grname,grname2 = draw(filename,ch,osii,ra)
  
  return render_template('net.html',form=form,image_name=newfilename,gr_name=grname,gr_name2=grname2)
 
